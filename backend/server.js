@@ -1,7 +1,8 @@
 import http from 'http';
 import express from 'express';
 import mongoose from 'mongoose';
-import { Server } from 'socket.io';
+//import { Server } from 'socket.io';
+import * as SocketIo from "socket.io";
 import dotenv from 'dotenv';
 import path from 'path';
 import productRouter from './routers/productRouter.js';
@@ -47,7 +48,8 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 5000;
 
 const httpServer = http.Server(app);
-const io = new Server(httpServer, { cors: { origin: '*' } });
+//const io = new Server(httpServer, { cors: { origin: '*' } });
+const io = new SocketIo.Server(httpServer, { cors: { origin: "" } });
 const users = [];
 
 io.on('connection', (socket) => {
