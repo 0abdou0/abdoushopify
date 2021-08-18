@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import http from "http";
 import { Server } from "socket.io";
 import express from "express";
@@ -8,6 +9,19 @@ import productRouter from "./routers/productRouter.js";
 import userRouter from "./routers/userRouter.js";
 import orderRouter from "./routers/orderRouter.js";
 import uploadRouter from "./routers/uploadRouter.js";
+=======
+import http from 'http';
+import express from 'express';
+import mongoose from 'mongoose';
+//import { Server } from 'socket.io';
+import * as SocketIo from "socket.io";
+import dotenv from 'dotenv';
+import path from 'path';
+import productRouter from './routers/productRouter.js';
+import userRouter from './routers/userRouter.js';
+import orderRouter from './routers/orderRouter.js';
+import uploadRouter from './routers/uploadRouter.js';
+>>>>>>> c0c887ed864aa0da830800fe62cf978f0d739504
 
 dotenv.config();
 
@@ -47,7 +61,12 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 5000;
 
 const httpServer = http.Server(app);
+<<<<<<< HEAD
 const io = new Server(httpServer, { cors: { origin: "*" } });
+=======
+//const io = new Server(httpServer, { cors: { origin: '*' } });
+const io = new SocketIo.Server(httpServer, { cors: { origin: "" } });
+>>>>>>> c0c887ed864aa0da830800fe62cf978f0d739504
 const users = [];
 
 io.on("connection", (socket) => {
